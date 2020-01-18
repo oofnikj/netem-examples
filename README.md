@@ -6,3 +6,6 @@ To use, set the arguments you would use for `netem` as environment variable `NET
 ```
 $ export NETEM="rate 5mbit delay 100ms 10ms"
 $ docker-compose up
+```
+
+[![asciicast](https://asciinema.org/a/x2cpIRXYK4exdBc1e8l254eGV.svg)](https://asciinema.org/a/x2cpIRXYK4exdBc1e8l254eGV)
