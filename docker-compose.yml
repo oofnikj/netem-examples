@@ -13,8 +13,14 @@ services:
       - sh
       - -c
       - |
-        tc qdisc add dev eth0 root netem ${NETEM} &&
+        iptables -A OUTPUT -o eth+ -j NFLOG
+        iptables -A INPUT -i eth+ -j NFLOG
+        tcpdump -i nflog -w /server.pcap & 
+        tc qdisc add dev eth0 root netem ${NETEM}
         iperf3 -s -1 --logfile /dev/null
+    volumes:
+      - ./server.pcap:/server.pcap
+
   iperf3-client:
     image: iperf3
     depends_on:
