@@ -13,3 +13,9 @@ $ docker-compose up
 ```
 
 [![asciicast](https://asciinema.org/a/x2cpIRXYK4exdBc1e8l254eGV.svg)](https://asciinema.org/a/x2cpIRXYK4exdBc1e8l254eGV)
+
+
+### Netfilter logging
+For the packet capture to be meaningful, we must capture from the netfilter log rather than from the interface directly. This is because `libpcap` captures _after_ the queuing discipline stage (i.e., after `netem`), but we want to capture _before_ to observe the effects of the queueing discipline as if they were caused by actual wire congestion.
+
+Reference: https://unix.stackexchange.com/a/527428
