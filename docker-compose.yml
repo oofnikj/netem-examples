@@ -32,7 +32,7 @@ services:
       - -c
       - |
         ping -c10 iperf3-server &&
-        iperf3 -V -c iperf3-server -R --forceflush
+        iperf3 -V -c iperf3-server -R --forceflush --get-server-output
 
 networks:
   iperf3-net:
